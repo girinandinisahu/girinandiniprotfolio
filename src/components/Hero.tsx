@@ -17,10 +17,12 @@ const Hero = () => {
           <div className="w-48 h-48 mx-auto mb-8 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full blur-lg opacity-75"></div>
             <div className="relative w-full h-full bg-gradient-to-r from-purple-400 to-blue-500 rounded-full p-1">
-              <div className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
-                <span className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
-                  GS
-                </span>
+              <div className="w-full h-full bg-slate-900 rounded-full overflow-hidden">
+                <img 
+                  src="/lovable-uploads/db9c0f1e-7e88-407f-946c-22741dcfce9d.png" 
+                  alt="Girinandini Sahu"
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
             </div>
           </div>
