@@ -1,4 +1,3 @@
-
 import { Code, Database, Brain, Globe, Wrench, BarChart } from 'lucide-react';
 
 const Skills = () => {
@@ -12,7 +11,7 @@ const Skills = () => {
     {
       title: "AI/ML Tools",
       icon: Brain,
-      skills: ["Scikit-learn", "TensorFlow", "Keras", "OpenCV", "Pandas", "NumPy"],
+      skills: ["TensorFlow", "OpenCV"],
       color: "from-blue-500 to-cyan-500"
     },
     {
