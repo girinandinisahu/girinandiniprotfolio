@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail, Phone, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated background elements */}
@@ -28,7 +29,10 @@ const Hero = () => {
           Girinandini Sahu
         </h2>
         
-        
+        <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto animate-fade-in">
+          I'm a 3rd-year B.Tech CSE student specializing in Artificial Intelligence and Machine Learning at SUIIT, Sambalpur University. 
+          Passionate about creating innovative solutions and eager to contribute to cutting-edge ML projects.
+        </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
           <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
@@ -57,4 +61,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
