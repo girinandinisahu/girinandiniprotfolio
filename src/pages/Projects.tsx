@@ -21,7 +21,9 @@ const ProjectsPage = () => {
         dataPoints: "15K+",
         visualizations: "12",
         insights: "25+"
-      }
+      },
+      liveDemo: "https://netflix-dashboard-demo.example.com",
+      codeUrl: "https://github.com/yourusername/netflix-dashboard"
     },
     {
       title: "ML Project Portfolio",
@@ -39,7 +41,9 @@ const ProjectsPage = () => {
         models: "8+",
         accuracy: "92%",
         datasets: "5+"
-      }
+      },
+      liveDemo: "https://ml-portfolio-demo.example.com",
+      codeUrl: "https://github.com/yourusername/ml-portfolio"
     },
     {
       title: "Stock Price Predictor",
@@ -57,7 +61,9 @@ const ProjectsPage = () => {
         accuracy: "85%",
         features: "15+",
         predictions: "1000+"
-      }
+      },
+      liveDemo: "https://stock-predictor-demo.example.com",
+      codeUrl: "https://github.com/yourusername/stock-predictor"
     },
     {
       title: "Sales Analytics Dashboard",
@@ -75,7 +81,9 @@ const ProjectsPage = () => {
         reports: "10+",
         metrics: "25+",
         automation: "80%"
-      }
+      },
+      liveDemo: "https://sales-dashboard-demo.example.com",
+      codeUrl: "https://github.com/yourusername/sales-dashboard"
     },
     {
       title: "Portfolio Website",
@@ -93,7 +101,9 @@ const ProjectsPage = () => {
         components: "20+",
         responsive: "100%",
         performance: "95+"
-      }
+      },
+      liveDemo: "https://portfolio-demo.example.com",
+      codeUrl: "https://github.com/yourusername/portfolio-website"
     },
     {
       title: "Algorithm Visualizer",
@@ -111,7 +121,9 @@ const ProjectsPage = () => {
         algorithms: "12+",
         visualizations: "8+",
         interactive: "100%"
-      }
+      },
+      liveDemo: "https://algorithm-visualizer-demo.example.com",
+      codeUrl: "https://github.com/yourusername/algorithm-visualizer"
     }
   ];
 
@@ -146,7 +158,10 @@ const ProjectsPage = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="text-center">
                     <project.icon className="w-16 h-16 text-white mx-auto mb-4" />
-                    <Button className="bg-white text-slate-900 hover:bg-gray-200">
+                    <Button 
+                      className="bg-white text-slate-900 hover:bg-gray-200"
+                      onClick={() => window.open(project.liveDemo, '_blank')}
+                    >
                       <Eye className="w-4 h-4 mr-2" />
                       View Demo
                     </Button>
@@ -203,11 +218,18 @@ const ProjectsPage = () => {
 
                 {/* Action Buttons */}
                 <div className="flex space-x-4">
-                  <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white flex-1">
+                  <Button 
+                    className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white flex-1"
+                    onClick={() => window.open(project.liveDemo, '_blank')}
+                  >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Live Demo
                   </Button>
-                  <Button variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white"
+                    onClick={() => window.open(project.codeUrl, '_blank')}
+                  >
                     <Github className="w-4 h-4 mr-2" />
                     Code
                   </Button>

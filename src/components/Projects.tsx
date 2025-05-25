@@ -1,3 +1,4 @@
+
 import { ExternalLink, Github, BarChart3, TrendingUp, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -20,7 +21,9 @@ const Projects = () => {
         dataPoints: "15K+",
         visualizations: "12",
         insights: "25+"
-      }
+      },
+      liveDemo: "https://netflix-dashboard-demo.example.com",
+      codeUrl: "https://github.com/yourusername/netflix-dashboard"
     },
     {
       title: "ML Project Portfolio",
@@ -38,7 +41,9 @@ const Projects = () => {
         models: "8+",
         accuracy: "92%",
         datasets: "5+"
-      }
+      },
+      liveDemo: "https://ml-portfolio-demo.example.com",
+      codeUrl: "https://github.com/yourusername/ml-portfolio"
     }
   ];
 
@@ -66,7 +71,10 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="text-center">
                     <project.icon className="w-16 h-16 text-white mx-auto mb-4" />
-                    <Button className="bg-white text-slate-900 hover:bg-gray-200">
+                    <Button 
+                      className="bg-white text-slate-900 hover:bg-gray-200"
+                      onClick={() => window.open(project.liveDemo, '_blank')}
+                    >
                       <Eye className="w-4 h-4 mr-2" />
                       View Demo
                     </Button>
@@ -123,11 +131,18 @@ const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="flex space-x-4">
-                  <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white flex-1">
+                  <Button 
+                    className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white flex-1"
+                    onClick={() => window.open(project.liveDemo, '_blank')}
+                  >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Live Demo
                   </Button>
-                  <Button variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white"
+                    onClick={() => window.open(project.codeUrl, '_blank')}
+                  >
                     <Github className="w-4 h-4 mr-2" />
                     Code
                   </Button>
