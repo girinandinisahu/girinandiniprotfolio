@@ -1,4 +1,3 @@
-
 import { Code, Database, Brain, Globe, Wrench, BarChart, Zap } from 'lucide-react';
 
 const Skills = () => {
@@ -24,7 +23,7 @@ const Skills = () => {
     {
       title: "Web Development",
       icon: Globe,
-      skills: ["HTML", "CSS", "JavaScript", "Flask"],
+      skills: ["HTML", "CSS"],
       color: "from-green-500 to-emerald-500"
     },
     {
@@ -36,7 +35,7 @@ const Skills = () => {
     {
       title: "Data Analysis",
       icon: BarChart,
-      skills: ["Power BI", "Excel", "Data Visualization"],
+      skills: ["Excel"],
       color: "from-indigo-500 to-purple-500"
     }
   ];
