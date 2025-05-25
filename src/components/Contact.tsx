@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,11 +14,52 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.send(
+        'service_yjgue5x', // Service ID
+        'template_hrt6pes', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Girinandini',
+        },
+        'YiV2WrpTOkw9hXj3D' // Public Key
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      
+      toast({
+        title: "Failed to Send Message",
+        description: "There was an error sending your message. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -176,6 +219,7 @@ const Contact = () => {
                     className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500"
                     placeholder="John Doe"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -190,6 +234,7 @@ const Contact = () => {
                     className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500"
                     placeholder="john@example.com"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -206,6 +251,7 @@ const Contact = () => {
                   className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500"
                   placeholder="Internship Opportunity / Project Collaboration"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -221,15 +267,17 @@ const Contact = () => {
                   className="bg-slate-700 border-slate-600 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500 resize-none"
                   placeholder="Tell me about your project, internship opportunity, or just say hello..."
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 font-semibold transition-all duration-300 transform hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 <Send className="w-5 h-5 mr-2" />
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
 
