@@ -1,9 +1,10 @@
-import { ExternalLink, Github, BarChart3, TrendingUp, Eye } from 'lucide-react';
+
+import { ArrowLeft, ExternalLink, Github, BarChart3, TrendingUp, Eye, Brain, Database, Globe, Code, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
-const Projects = () => {
-  const projects = [
+const ProjectsPage = () => {
+  const allProjects = [
     {
       title: "Netflix Movies Dashboard",
       description: "An interactive Power BI dashboard analyzing Netflix movie trends, genres, and ratings. This comprehensive dashboard provides insights into content distribution, viewer preferences, and platform analytics through dynamic visualizations.",
@@ -39,24 +40,103 @@ const Projects = () => {
         accuracy: "92%",
         datasets: "5+"
       }
+    },
+    {
+      title: "Stock Price Predictor",
+      description: "Machine learning model that predicts stock prices using historical data and technical indicators. Built with Python and scikit-learn, featuring data visualization and real-time predictions.",
+      technologies: ["Python", "Scikit-learn", "Matplotlib", "Pandas"],
+      features: [
+        "Historical data analysis",
+        "Technical indicators",
+        "Price prediction models",
+        "Interactive charts"
+      ],
+      image: "bg-gradient-to-br from-green-500 to-teal-600",
+      icon: Brain,
+      stats: {
+        accuracy: "85%",
+        features: "15+",
+        predictions: "1000+"
+      }
+    },
+    {
+      title: "Sales Analytics Dashboard",
+      description: "Comprehensive Excel dashboard for sales performance tracking and analysis. Features pivot tables, charts, and automated reporting for business intelligence.",
+      technologies: ["Excel", "Pivot Tables", "Charts", "VBA"],
+      features: [
+        "Sales trend analysis",
+        "Performance metrics",
+        "Automated reports",
+        "Interactive filters"
+      ],
+      image: "bg-gradient-to-br from-blue-500 to-cyan-600",
+      icon: Database,
+      stats: {
+        reports: "10+",
+        metrics: "25+",
+        automation: "80%"
+      }
+    },
+    {
+      title: "Portfolio Website",
+      description: "Modern, responsive portfolio website built with React and Tailwind CSS. Features smooth animations, dark theme, and optimized performance.",
+      technologies: ["React", "Tailwind CSS", "HTML", "CSS"],
+      features: [
+        "Responsive design",
+        "Smooth animations",
+        "Contact form integration",
+        "Mobile optimized"
+      ],
+      image: "bg-gradient-to-br from-orange-500 to-red-600",
+      icon: Globe,
+      stats: {
+        components: "20+",
+        responsive: "100%",
+        performance: "95+"
+      }
+    },
+    {
+      title: "Algorithm Visualizer",
+      description: "Interactive web application that visualizes various data structures and algorithms. Built to help understand complex algorithms through visual representation.",
+      technologies: ["HTML", "CSS", "JavaScript", "Algorithms"],
+      features: [
+        "Sorting algorithms",
+        "Search algorithms",
+        "Tree traversals",
+        "Graph algorithms"
+      ],
+      image: "bg-gradient-to-br from-pink-500 to-rose-600",
+      icon: Code,
+      stats: {
+        algorithms: "12+",
+        visualizations: "8+",
+        interactive: "100%"
+      }
     }
   ];
 
   return (
-    <section className="py-20 bg-slate-900" id="projects">
+    <div className="min-h-screen bg-slate-900 pt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Projects</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto rounded-full"></div>
-          <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
-            Check out some of my design projects, meticulously crafted with love and dedication
+        {/* Header */}
+        <div className="mb-12">
+          <Link to="/" className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-6 transition-colors duration-300">
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Home
+          </Link>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            All <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Projects</span>
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-6"></div>
+          <p className="text-gray-400 text-lg max-w-2xl">
+            Explore my complete collection of projects spanning data analysis, machine learning, web development, and algorithm visualization.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        {/* Projects Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {allProjects.map((project, index) => (
             <div
               key={project.title}
               className="bg-slate-800 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all duration-300 transform hover:scale-105 overflow-hidden group"
@@ -136,28 +216,9 @@ const Projects = () => {
             </div>
           ))}
         </div>
-
-        {/* More Projects CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-8 rounded-2xl border border-slate-600 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Want to see more?
-            </h3>
-            <p className="text-gray-400 mb-6">
-              I'm constantly working on new projects and exploring innovative solutions. 
-              Check out my complete project portfolio to see all my work.
-            </p>
-            <Link to="/projects">
-              <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3">
-                <Github className="w-5 h-5 mr-2" />
-                View All Projects
-              </Button>
-            </Link>
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Projects;
+export default ProjectsPage;
